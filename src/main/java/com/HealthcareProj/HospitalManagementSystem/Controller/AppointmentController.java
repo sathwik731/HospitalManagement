@@ -2,6 +2,7 @@ package com.HealthcareProj.HospitalManagementSystem.Controller;
 
 import com.HealthcareProj.HospitalManagementSystem.Service.AppointmentService;
 import com.HealthcareProj.HospitalManagementSystem.model.Appointment;
+import com.HealthcareProj.HospitalManagementSystem.model.Doctor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public class AppointmentController {
     }
 
     @PutMapping("/{id}")
-    public void updateAppointment(@PathVariable Long id){
+    public void updateAppointment(@PathVariable Long id,@RequestBody Doctor doctor){
         appointmentService.updateAppointment();
 
     }

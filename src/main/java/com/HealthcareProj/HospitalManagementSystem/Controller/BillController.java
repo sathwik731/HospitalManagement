@@ -2,6 +2,7 @@ package com.HealthcareProj.HospitalManagementSystem.Controller;
 
 import com.HealthcareProj.HospitalManagementSystem.Service.BillService;
 import com.HealthcareProj.HospitalManagementSystem.model.Bill;
+import com.HealthcareProj.HospitalManagementSystem.model.Doctor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class BillController {
         return billService.getBillById(id);
     }
 
-    public void updateBill(@PathVariable Long id){
+    public void updateBill(@PathVariable Long id,@RequestBody Doctor doctor){
         System.out.println("Details updated");
         billService.updateBill();
 
