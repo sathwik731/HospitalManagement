@@ -3,6 +3,7 @@ package com.HealthcareProj.HospitalManagementSystem.Service;
 import com.HealthcareProj.HospitalManagementSystem.Repository.PatientRepository;
 import com.HealthcareProj.HospitalManagementSystem.model.Patient;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,7 @@ public class PatientService {
         }
     }
 
+    @Transactional
     public Patient updatePatient(Long id,Patient updatedPatient){
         try{
             Optional<Patient> existingPatient = patientRepository.findById(id);
@@ -62,10 +64,10 @@ public class PatientService {
                 Patient p = existingPatient.get();
                 p.setName(updatedPatient.getName());
                 p.setAge(updatedPatient.getAge());
-                p.setId(updatedPatient.getId());
-                patientRepository.save(p);
+                p.setGender(updatedPatient.getGender());
+                Patient savedPatient= patientRepository.save(p);
 
-                return updatedPatient;
+                return savedPatient;
 
             }else{
                 logger.error("patient with ID {} not found", id);

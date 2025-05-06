@@ -13,7 +13,7 @@ public class DoctorController {
 
 
     @GetMapping
-    public List<Doctor> cretcreateDoctor(){
+    public List<Doctor> getDoctor(){
         return doctorService.getDoctor();
 
     }
